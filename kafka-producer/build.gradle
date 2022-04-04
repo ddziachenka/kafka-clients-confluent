@@ -1,0 +1,39 @@
+buildscript {
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath 'com.commercehub.gradle.plugin:gradle-avro-plugin:0.15.1'
+  }
+}
+
+plugins {
+  id 'org.springframework.boot' version '2.6.1'
+  id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+  id 'java'
+}
+
+repositories {
+  jcenter()
+  maven {
+    url 'https://packages.confluent.io/maven'
+  }
+}
+
+apply plugin: 'idea'
+
+group = 'io.confluent.examples.clients.cloud'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '8'
+
+repositories {
+  jcenter()
+}
+
+dependencies {
+  implementation 'org.springframework.boot:spring-boot-starter'
+  implementation 'org.springframework.kafka:spring-kafka'
+
+  compileOnly 'org.projectlombok:lombok'
+  annotationProcessor 'org.projectlombok:lombok'
+}
